@@ -35,14 +35,14 @@ if(size(dependents) ~= 0 )
     side = size(dependents);
     independentsize = size(independent);
     solves = zeros(sizeMatrix(1),side(2));
-    answers = zeros(1,independentsize(2))
     for i=1:1:side(2)
         modle = 0;
         for j=1:1:size(independent)
             modle = modle + coefficient(j,i).*independent(:,j);
         end
         answers = solve(modle == inputMatrix(:,dependents(i)),coefficient(:,i).');
-        solves(:,i) = [answers'];
+        c = struct2cell(answers);
+        solves(:,i) = [c{:}];
     end
 end
 
