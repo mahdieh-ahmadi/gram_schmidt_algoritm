@@ -12,7 +12,7 @@ for i=2:1:counter
     for j=1:1:i-1
        qk = qk - ( q(:,j)'*ak).*q(:,j);
     end
-    if (norm(qk)<0.1)
+    if (norm(qk)<0.01)
         dependents =[dependents , i];
         qk = zero;
         q =[q, qk];
